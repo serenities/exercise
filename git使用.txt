@@ -1,0 +1,49 @@
+下载gitbash
+https://git-scm.com/downloads
+
+建立远程库，clone到本地，更新密匙，提交前先pull再push
+
+远程库与本地库建立连接
+1.本地生成密匙（新到一个地方新生成一个添加进账户即可）
+	1.ssh-keygen -t rsa -C "774156433@qq.com"  保存路径enter一路
+	2.复制id_rsa.pub内容到add sshkey title随便 输入 ssh -T git@github.com检验 输入yes You've successfully authenticated, but GitHub does not provide shell access
+	3. git config --global user.name "wangning"
+	   git config --global user.email "774156433@qq.com"
+2.建立本地仓库（克隆（常用先自己在网站上建一个直接clone，把需要的文件放进去）or自己建）
+	2.1新建本地版本库（本地建立推送到远程github）
+	1.建立目录mkdir  filename  进入目录cd filename 显示路径pwd
+	2.git init在当前目录建立仓库
+	3.建立连接（一句约等于clone）
+		git remote add origin git@github.com:serenities/work.git
+		git pull
+		git push -u origin master
+			改变远程关联库(三种方法)
+			1. 修改命令
+			git remote origin set-url URL
+			2.先删后加
+			git remote rm origin 
+			git remote add origin git@github.com:serenities/work.git
+			3. 直接修改config文件
+
+	2.2克隆仓库（不需要权限，直接建立好连接）
+	进入目录clone到当前目录之下 git clone git@github.com:serenities/work.git
+3. git操作
+	基本操作 workingdir  stage（暂存区）  head
+	git add filename（--all） //推送文件改动到stage
+	git commit   -m "commit"	 //stage 提交到head
+	git pull         //获取远程改动
+	git status  //展示修改
+	git log
+	git rest --hard HEAD（版本号不用打全）回退版本
+	git reflog
+
+	分支操作
+	git checkout -b feature-x //创建分支
+	git checkout master //切换分支
+	git branch -d feature-x //删除分支
+	git push origin <branch> 推送分支
+	git diff <source_branch> <target_branch>//查看分支差异 git diff HEAD -- readme.txt
+	git merge <branch>//合并分支到当前分支
+	
+	分支管理策略
+	
